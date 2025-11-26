@@ -1,93 +1,53 @@
-.dashboard-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.dashboard {
+  padding: 20px;
 }
 
-.cards-row {
+.cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 20px;
 }
 
-.stat-card {
-  flex: 1 1 200px;
-  padding: 16px;
-  border-radius: 16px;
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
   color: white;
-  transform: translateY(0);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-.stat-card h3 {
-  margin: 0 0 8px;
-  font-size: 16px;
-  opacity: 0.9;
-}
-
-.stat-card .value {
-  margin: 0;
-  font-size: 28px;
+.card .value {
+  font-size: 32px;
   font-weight: bold;
 }
 
-/* Colores diferentes para cada tarjeta */
-.stat-card.total {
-  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
-}
+.blue { background: linear-gradient(135deg,#3f51b5,#1e2a78); }
+.green { background: linear-gradient(135deg,#009688,#00695c); }
+.orange { background: linear-gradient(135deg,#ff9800,#ef6c00); }
 
-.stat-card.today {
-  background: linear-gradient(135deg, #009688, #26a69a);
-}
-
-.stat-card.upcoming {
-  background: linear-gradient(135deg, #ff9800, #ffa726);
-}
-
-.chart-card {
-  padding: 16px;
-  border-radius: 16px;
+.chart-container {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f5f6f7;
+  border-radius: 12px;
 }
 
 .chart {
   display: flex;
+  gap: 10px;
   align-items: flex-end;
-  gap: 12px;
-  margin-top: 16px;
-  height: 160px;
+  height: 150px;
 }
 
 .bar {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.bar-inner {
-  width: 100%;
+  width: 20px;
   background: #3f51b5;
-  border-radius: 8px 8px 0 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  transition: height 0.25s ease;
-}
-
-.bar-value {
-  padding: 2px 4px;
-  font-size: 12px;
-  color: #fff;
-}
-
-.bar-label {
-  margin-top: 4px;
-  font-size: 12px;
-  opacity: 0.8;
+  color: white;
+  text-align: center;
+  font-size: 10px;
+  border-radius: 4px 4px 0 0;
 }

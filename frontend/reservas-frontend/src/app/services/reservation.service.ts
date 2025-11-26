@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Reservation } from './reservation.model';
-import { Observable, of } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ReservationService {
 
   private reservations: Reservation[] = [];
-  private autoId = 1;
 
-  constructor() {}
-
-  getReservations(): Observable<Reservation[]> {
-    return of(this.reservations);
+  getReservations(): Reservation[] {
+    return [...this.reservations]; // evita referencias duplicadas
   }
 
-  createReservation(reservation: Reservation): Observable<Reservation> {
-    const newReservation = { ...reservation, id: this.autoId++ };
-    this.reservations.push(newReservation);
-    return of(newReservation);
+  addReservation(reservation: Reservation) {
+    this.reservations.push(reservation);
   }
 
-  deleteReservation(id: number): Observable<void> {
+  deleteReservation(id: number) {
     this.reservations = this.reservations.filter(r => r.id !== id);
-    return of(void 0);
   }
 }

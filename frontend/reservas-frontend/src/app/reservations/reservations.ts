@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Reservation } from '../services/reservation.model';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ReservationService } from '../services/reservation.service';
+import { Reservation } from '../services/reservation.model';
 
 @Component({
   selector: 'app-reservations',
   standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './reservations.html',
   styleUrls: ['./reservations.css']
 })
-export class ReservationsComponent implements OnInit {
+export class ReservationsComponent {
 
   reservations: Reservation[] = [];
-
   newReservation: Reservation = {
+    id: 0,
     roomName: '',
     reservedBy: '',
     date: '',
@@ -27,45 +30,17 @@ export class ReservationsComponent implements OnInit {
   }
 
   loadReservations() {
-    this.reservationService.getReservations().subscribe(data => {
-      this.reservations = data;
-    });
+    this.reservations = this.reservationService.getReservations();
   }
 
   saveReservation() {
-    if (!this.newReservation.roomName ||
-        !this.newReservation.reservedBy ||
-        !this.newReservation.date ||
-        !this.newReservation.startTime ||
-        !this.newReservation.endTime) {
-      alert('Por favor completa todos los campos.');
-      return;
-    }
-
-    this.reservationService.createReservation(this.newReservation)
-      .subscribe(() => {
-        this.resetForm();
-        this.loadReservations(); // 🔥 evita duplicados
-      });
+    this.reservationService.addReservation(this.newReservation);
+    this.newReservation = { id: 0, roomName: '', reservedBy: '', date: '', startTime: '', endTime: '' };
+    this.loadReservations();
   }
 
-  deleteReservation(id: number | undefined) {
-    if (!id) return;
-
-    if (!confirm('¿Seguro que deseas eliminar esta reserva?')) return;
-
-    this.reservationService.deleteReservation(id).subscribe(() => {
-      this.loadReservations(); // 🔥 evita duplicados
-    });
-  }
-
-  resetForm() {
-    this.newReservation = {
-      roomName: '',
-      reservedBy: '',
-      date: '',
-      startTime: '',
-      endTime: ''
-    };
+  deleteReservation(id: number) {
+    this.reservationService.deleteReservation(id);
+    this.loadReservations();
   }
 }

@@ -1,5 +1,5 @@
 export interface Reservation {
-  id?: number;          // opcional al crear, definido al venir del backend
+  id: number;            // ← ID ahora es obligatorio
   roomName: string;
   reservedBy: string;
   date: string;

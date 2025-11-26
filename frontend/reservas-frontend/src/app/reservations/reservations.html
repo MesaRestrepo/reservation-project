@@ -1,72 +1,53 @@
-<h2 class="title">Gestión de Reservas</h2>
+<div class="reservations-container">
 
-<!-- FORMULARIO DE NUEVA RESERVA -->
-<div class="form-container">
-  <h3>Nueva reserva</h3>
+  <h2>Gestor de Reservas</h2>
 
-  <div class="form-grid">
-    <div class="form-item">
-      <label>Sala</label>
-      <input
-        type="text"
-        [(ngModel)]="newReservation.roomName"
-        placeholder="Nombre de la sala">
-    </div>
+  <!-- FORMULARIO -->
+  <div class="form-card">
+    <h3>Nueva reserva</h3>
 
-    <div class="form-item">
+    <form (ngSubmit)="saveReservation()" #reservationForm="ngForm">
+
+      <label>Nombre de la sala</label>
+      <input type="text" [(ngModel)]="newReservation.roomName" name="roomName" required>
+
       <label>Reservado por</label>
-      <input
-        type="text"
-        [(ngModel)]="newReservation.reservedBy"
-        placeholder="Nombre de la persona">
-    </div>
+      <input type="text" [(ngModel)]="newReservation.reservedBy" name="reservedBy" required>
 
-    <div class="form-item">
       <label>Fecha</label>
-      <input
-        type="date"
-        [(ngModel)]="newReservation.date">
-    </div>
+      <input type="date" [(ngModel)]="newReservation.date" name="date" required>
 
-    <div class="form-item">
-      <label>Hora inicio</label>
-      <input
-        type="time"
-        [(ngModel)]="newReservation.startTime">
-    </div>
+      <label>Hora de inicio</label>
+      <input type="time" [(ngModel)]="newReservation.startTime" name="startTime" required>
 
-    <div class="form-item">
-      <label>Hora fin</label>
-      <input
-        type="time"
-        [(ngModel)]="newReservation.endTime">
-    </div>
+      <label>Hora de fin</label>
+      <input type="time" [(ngModel)]="newReservation.endTime" name="endTime" required>
+
+      <button class="btn-save" type="submit">Guardar reserva</button>
+    </form>
   </div>
 
-  <button class="btn-save" (click)="saveReservation()">
-    Guardar reserva
-  </button>
+  <!-- LISTA DE RESERVAS -->
+  <div class="list-card">
+    <h3>Reservas registradas</h3>
+
+    <p *ngIf="reservations.length === 0" class="empty-msg">
+      No hay reservas aún.
+    </p>
+
+    <ul class="reservation-list">
+      <li *ngFor="let r of reservations" class="reservation-item">
+        <div>
+          <strong>{{ r.roomName }}</strong> — {{ r.date }}  
+          <br>
+          {{ r.startTime }} → {{ r.endTime }}
+          <br>
+          Reservado por: <strong>{{ r.reservedBy }}</strong>
+        </div>
+
+        <button class="btn-delete" (click)="deleteReservation(r.id)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+
 </div>
-
-<hr class="divider">
-
-<!-- LISTADO DE RESERVAS -->
-<h3 class="subtitle">Listado de reservas</h3>
-
-<div *ngIf="reservations.length === 0" class="empty-msg">
-  No hay reservas registradas.
-</div>
-
-<ul class="reservations-list">
-  <li *ngFor="let r of reservations" class="reservation-item">
-    <div class="res-info">
-      <strong>{{ r.roomName }}</strong>
-      <span>{{ r.date }} — {{ r.startTime }} a {{ r.endTime }}</span>
-      <span>Reservado por: <strong>{{ r.reservedBy }}</strong></span>
-    </div>
-
-    <button class="btn-delete" (click)="deleteReservation(r.id)">
-      Eliminar
-    </button>
-  </li>
-</ul>
