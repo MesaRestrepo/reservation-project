@@ -5,14 +5,16 @@
 .cards {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .card {
   flex: 1;
+  min-width: 220px;
   padding: 20px;
   border-radius: 12px;
   color: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
 }
 
 .card h3 {
@@ -50,4 +52,18 @@
   text-align: center;
   font-size: 10px;
   border-radius: 4px 4px 0 0;
+}
+
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .chart {
+    height: 120px;
+  }
 }

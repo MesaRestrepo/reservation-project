@@ -11,8 +11,13 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class LayoutComponent {
   isDarkMode = false;
+  sidebarOpen = false;
 
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
+  }
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
   }
 }
