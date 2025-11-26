@@ -1,0 +1,24 @@
+# Angular
+/node_modules
+/dist
+/.angular
+/.vs
+/.vscode
+
+# Env files
+*.env
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE stuff
+.idea/
+.DS_Store
+
+# Build
+/build
+/tmp

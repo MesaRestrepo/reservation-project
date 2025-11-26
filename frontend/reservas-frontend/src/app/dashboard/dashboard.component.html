@@ -1,0 +1,31 @@
+<h2 class="dashboard-title">Resumen general</h2>
+
+<div class="cards-row">
+  <mat-card class="stat-card total">
+    <h3>Total de reservas</h3>
+    <p class="value">{{ totalReservations }}</p>
+  </mat-card>
+
+  <mat-card class="stat-card today">
+    <h3>Reservas de hoy</h3>
+    <p class="value">{{ todayReservations }}</p>
+  </mat-card>
+
+  <mat-card class="stat-card upcoming">
+    <h3>Próximas reservas</h3>
+    <p class="value">{{ upcomingReservations }}</p>
+  </mat-card>
+</div>
+
+<mat-card class="chart-card">
+  <h3>Reservas últimos 7 días</h3>
+
+  <div class="chart">
+    <div class="bar" *ngFor="let d of last7DaysStats">
+      <div class="bar-inner" [style.height.%]="d.count * 20">
+        <span class="bar-value" *ngIf="d.count > 0">{{ d.count }}</span>
+      </div>
+      <span class="bar-label">{{ d.label }}</span>
+    </div>
+  </div>
+</mat-card>

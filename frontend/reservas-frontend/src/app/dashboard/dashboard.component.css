@@ -1,0 +1,93 @@
+.dashboard-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  flex: 1 1 200px;
+  padding: 16px;
+  border-radius: 16px;
+  color: white;
+  transform: translateY(0);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.stat-card .value {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Colores diferentes para cada tarjeta */
+.stat-card.total {
+  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+}
+
+.stat-card.today {
+  background: linear-gradient(135deg, #009688, #26a69a);
+}
+
+.stat-card.upcoming {
+  background: linear-gradient(135deg, #ff9800, #ffa726);
+}
+
+.chart-card {
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+  height: 160px;
+}
+
+.bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar-inner {
+  width: 100%;
+  background: #3f51b5;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: height 0.25s ease;
+}
+
+.bar-value {
+  padding: 2px 4px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.bar-label {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.8;
+}

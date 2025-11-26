@@ -1,0 +1,39 @@
+<div class="main-container" [class.dark]="isDarkMode">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="logo">
+      <span class="material-icons">meeting_room</span>
+      ReservasApp
+    </h2>
+
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <span class="material-icons">dashboard</span>
+        Dashboard
+      </a>
+
+      <a routerLink="/reservations" routerLinkActive="active">
+        <span class="material-icons">event</span>
+        Reservas
+      </a>
+    </nav>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="content">
+    <header class="navbar">
+      <h1>Sistema de Reservas</h1>
+
+      <button class="icon-btn" (click)="toggleDarkMode()">
+        <span class="material-icons">
+          {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+        </span>
+      </button>
+    </header>
+
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
